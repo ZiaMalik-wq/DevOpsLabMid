@@ -28,9 +28,9 @@ kind: Service
 metadata:
   name: backend-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: backend
   ports:
-  - port: 8000
+  - port: 80
     targetPort: 8000

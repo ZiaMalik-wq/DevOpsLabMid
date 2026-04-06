@@ -3,8 +3,8 @@ import axios from 'axios';
 //const BASE_URL = 'https://campuscareerai.onrender.com';
 
 // const BASE_URL = 'http://127.0.0.1:8000';
-// const BASE_URL = 'https://api.campuscareerai.me';
-const BASE_URL = 'http://57.155.220.21:8000';
+// const BASE_URL = 'http://57.155.220.21:8000';
+const BASE_URL = "https://api.campuscareerai.me";
 
 const api = axios.create({
   baseURL: BASE_URL,

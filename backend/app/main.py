@@ -54,10 +54,10 @@ async def global_exception_handler(request: Request, exc: Exception):
     )
 
 origins = [
-    "http://localhost:5173",
+    "http://localhost:5173",  # dev
     "https://campuscareerai.me",
     "https://www.campuscareerai.me",
-    "http://20.212.91.217"
+    "https://api.campuscareerai.me",
 ]
 
 # 5. Middleware (CORS)
