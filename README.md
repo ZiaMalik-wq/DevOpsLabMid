@@ -5,8 +5,7 @@ Campus Career AI is an intelligent recruitment platform built for university stu
 ---
 
 ## Live Demo
-
-Try the live application here: https://www.campuscareerai.me/
+Check out the live application at: [https://campuscareerai.me/](https://campuscareerai.me/)
 
 ---
 
@@ -48,7 +47,9 @@ Try the live application here: https://www.campuscareerai.me/
 
 - JWT authentication with role-based access control
 - Secure signed URLs for file storage (1-hour expiry)
-- Async API endpoints for better performance
+- Containerized with **Docker** and orchestrated using **docker-compose**
+- Deployed on **Azure Kubernetes Service (AKS)** with **Nginx Ingress**
+- Automated SSL/TLS certificates via **cert-manager** and **Let's Encrypt**
 
 ---
 
@@ -179,13 +180,30 @@ The UI will run at http://localhost:5173
 
 ## Running with Docker
 
-```bash
-# Build the image
-docker build -t campus-backend .
+The easiest way to run the full stack locally is using **docker-compose**:
 
-# Run the container
-docker run -p 10000:10000 --env-file backend/.env campus-backend
+```bash
+# Build and start both frontend and backend
+docker-compose up --build
 ```
+
+The frontend will be available at `http://localhost:80` and the backend at `http://localhost:8000`.
+
+---
+
+## Deployment to Azure Kubernetes Service (AKS)
+
+The project includes full Kubernetes manifests for deployment to AKS:
+
+1. **Dockerize**: Build and push images to Docker Hub.
+2. **Infrastructure**: Create an AKS cluster and install Nginx Ingress Controller and cert-manager.
+3. **Deploy**:
+   ```bash
+   kubectl apply -f kubernetes/backend.yaml
+   kubectl apply -f kubernetes/frontend.yaml
+   kubectl apply -f kubernetes/issuer.yaml
+   kubectl apply -f kubernetes/ingress.yaml
+   ```
 
 ---
 
@@ -236,23 +254,12 @@ docker run -p 10000:10000 --env-file backend/.env campus-backend
 
 ## Project Structure
 
-```
 campus-career-ai/
-├── backend/
-│   ├── app/
-│   │   ├── api/routes/      # API endpoints
-│   │   ├── core/            # AI, LLM, security modules
-│   │   ├── models/          # Database models
-│   │   └── schemas.py       # Pydantic schemas
-│   ├── migrations/          # Alembic migrations
-│   └── requirements.txt
-├── frontend/
-│   ├── src/
-│   │   ├── components/      # Reusable components
-│   │   ├── context/         # React context providers
-│   │   ├── pages/           # Page components
-│   │   └── services/        # API service
-│   └── package.json
+├── backend/             # FastAPI Backend
+├── frontend/            # React/Vite Frontend
+├── kubernetes/          # K8s manifests (AKS)
+├── Dockerfile           # Backend Dockerfile
+├── docker-compose.yml   # Local orchestration
 └── README.md
 ```
 
