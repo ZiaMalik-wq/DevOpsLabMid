@@ -14,5 +14,6 @@ frontend/.env
 frontend/.DS_Store
 
 # General
-.vscode/
 .idea/
+config.bat
+node_modules

@@ -254,6 +254,7 @@ The project includes full Kubernetes manifests for deployment to AKS:
 
 ## Project Structure
 
+```
 campus-career-ai/
 ├── backend/             # FastAPI Backend
 ├── frontend/            # React/Vite Frontend
