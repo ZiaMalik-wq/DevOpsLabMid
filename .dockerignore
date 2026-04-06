@@ -1,0 +1,24 @@
+# Python ignore
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+env/
+venv/
+.env
+
+# Node ignore
+node_modules/
+dist/
+build/
+.npm
+.vite
+
+# Git
+.git/
+.gitignore
+
+# OS
+.DS_Store
+Thumbs.db

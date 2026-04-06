@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-dark-bg: #111827;
+    --color-dark-surface: #1f2937;
+
+    /* Font Family Configuration */
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+@layer base {
+
+    /* Base Styles - Font smoothing applied to html for better performance */
+    html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+        font-family: var(--font-sans);
+        letter-spacing: -0.011em;
+        font-feature-settings: "liga" 1, "calt" 1;
+    }
+
+    /* Fix browser autofill background color */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px white inset !important;
+        -webkit-text-fill-color: #111827 !important;
+        caret-color: #111827 !important;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+    /* Dark mode autofill fix */
+    .dark input:-webkit-autofill,
+    .dark input:-webkit-autofill:hover,
+    .dark input:-webkit-autofill:focus,
+    .dark input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px #374151 inset !important;
+        -webkit-text-fill-color: #fff !important;
+        caret-color: #fff !important;
+    }
+
+    /* Improved heading styles */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--font-sans);
+        letter-spacing: -0.022em;
+        font-weight: 700;
+    }
+
+    /* Better paragraph spacing */
+    p {
+        line-height: 1.65;
+    }
+
+    /* Selective text rendering optimization */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    button,
+    a {
+        text-rendering: optimizeLegibility;
+    }
+}
+
+@layer components {
+    .input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 2px solid rgb(229 231 235);
+        border-radius: 0.75rem;
+        outline: none;
+        transition: all 0.2s;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        letter-spacing: -0.011em;
+    }
+
+    .input:focus {
+        outline: 2px solid rgb(59 130 246);
+        outline-offset: 2px;
+    }
+
+    .input::placeholder {
+        font-weight: 400;
+        color: rgb(156 163 175);
+    }
+
+    .btn-primary {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: linear-gradient(to right, rgb(37 99 235), rgb(147 51 234));
+        color: white;
+        font-weight: 600;
+        font-size: 0.9375rem;
+        letter-spacing: -0.011em;
+        border-radius: 0.75rem;
+        transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+
+    .btn-secondary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: rgb(243 244 246);
+        color: rgb(55 65 81);
+        font-weight: 600;
+        font-size: 0.9375rem;
+        letter-spacing: -0.011em;
+        border-radius: 0.75rem;
+        transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+        background: rgb(229 231 235);
+    }
+
+    .label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        letter-spacing: -0.011em;
+        color: rgb(55 65 81);
+        margin-bottom: 0.5rem;
+    }
+
+    .hint {
+        font-size: 0.8125rem;
+        font-weight: 500;
+        letter-spacing: -0.011em;
+        color: rgb(249 115 22);
+        margin-top: 0.25rem;
+    }
+}
